@@ -56,21 +56,21 @@ export default function TextForm(props) {
     <div className='container' style={{color:props.mode ==='dark'?'white':'#042743'}}>
     <h1>{props.heading}</h1>
     <div className="mb-3">
-    <textarea className="form-control" value={text} style={{backgroundColor:props.mode ==='dark'?'grey':'white',color:props.mode ==='dark'?'white':'#042743'}} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+    <textarea className="form-control" value={text} style={{backgroundColor:props.mode ==='dark'?'#232b85':'white',color:props.mode ==='dark'?'white':'#042743'}} onChange={handleOnChange} id="myBox" rows="8"></textarea>
     </div>
-    <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
-    <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to Lowercase</button>
-    {/* <button className="btn btn-primary mx-1" onClick={handleSentenceClick}>Convert Sentence</button> */}
-    <button className="btn btn-primary mx-1 my-1" onClick={handleClearClick}>Clear Text</button>
-    <button className="btn btn-primary mx-1 my-1" onClick={handleDownloadClick}>Download Text</button>
+    <button className="btn btn-primary mx-1 my-1" disabled={text.length===0} onClick={handleUpClick}>Convert to Uppercase</button>
+    <button className="btn btn-primary mx-1 my-1" disabled={text.length===0} onClick={handleLowClick}>Convert to Lowercase</button>
+    {/* <button className="btn btn-primary mx-1" disabled={text.length===0} onClick={handleSentenceClick}>Convert Sentence</button> */}
+    <button className="btn btn-primary mx-1 my-1" disabled={text.length===0} onClick={handleClearClick}>Clear Text</button>
+    <button className="btn btn-primary mx-1 my-1" disabled={text.length===0} onClick={handleDownloadClick}>Download Text</button>
 
 
     </div>
     <div className="container my-3" style={{color:props.mode ==='dark'?'white':'#042743'}}>
         <h2>Your text sammary</h2>
-        <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
         <p>{(text.split('.').length)-1} sentences</p>
-        <p><b>{0.008 * text.split(" ").length } </b>Minutes to read</p>
+        <p><b>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length } </b>Minutes to read</p>
         <h2>Preview</h2>
         <p>{text.length>0?text:"Enter some text in above box to preview"}</p>
 

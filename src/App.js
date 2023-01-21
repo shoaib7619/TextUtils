@@ -1,15 +1,15 @@
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, {useState} from 'react'
 import Alert from './components/Alert';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   // Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  // Link
+} from "react-router-dom";
 
 function App() {
 
@@ -26,8 +26,20 @@ function App() {
        setAlert(null);
       }, 1000);
     }
+    // const removeBodyColor =()=>{
+    //   document.body.classList.remove('bg-light')
+    //   document.body.classList.remove('bg-dark')
+    //   document.body.classList.remove('bg-success')
+    //   document.body.classList.remove('bg-primary')
+    //   document.body.classList.remove('bg-warning')
+    //   document.body.classList.remove('bg-danger')
 
-    const toggleMode =()=>{
+    // }
+    // const toggleMode =(cls)=>{
+      const toggleMode =()=>{
+
+      // removeBodyColor()
+      // document.body.classList.add('bg-'+cls)
     if(mode ==='dark'){
       setMode ('light');
       setToggleText("Enable Dark Mode")
@@ -44,21 +56,21 @@ function App() {
   }
   return (
     <>
-    {/* <Router> */}
+    <Router>
 
   <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} toggleText={toggleText}/>
   <Alert alert={alert}/>
     <div className="container my-3">
-  {/* <Switch>
+  <Switch>
           <Route exact path="/about">
             <About mode={mode} />
           </Route> 
-         <Route exact path="/"> */}
+         <Route exact path="/">
             <TextForm  heading="Enter the text to analyze" mode={mode} showAlert={showAlert}/> 
-          {/* </Route>  */}
-         {/* </Switch>  */}
+          </Route> 
+         </Switch> 
         </div>
-     {/* </Router>  */}
+     </Router> 
       </>
   );
   
